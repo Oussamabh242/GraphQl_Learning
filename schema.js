@@ -26,11 +26,25 @@ export const typeDefs = `#graphql
 
     type Query{
         tweets : [Tweet]
-        tweet(id: ID!):  Tweet
+        tweet(tweet_id: ID , content : String):  Tweet
         users : [User]
         user(id: ID!):  User
         comments: [Comment]
         comment(id: ID!):  Comment
+    }
+
+    type Mutation{
+        deleteComment(comment_id : ID!) : String
+        addTweet(tweet : AddTweetInput!) :String 
+        updateTweet(utweet : UpdateTweetInput) : String
+    }
+    input AddTweetInput{
+        content : String!
+        user_id : ID!
+    }
+    input UpdateTweetInput{
+        tweet_id : ID!
+        content: String!
     }
 
 
